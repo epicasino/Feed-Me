@@ -1,0 +1,52 @@
+:root {
+  --dark-red: #7C0A02;
+  --light-red: #B22222;
+  --orange: #E25822;
+  --yellow: #F1BC31;
+}
+
+body {
+  background-color: var(--dark-red);
+}
+
+.navbar {
+  background-color: var(--yellow);
+  color: white;
+}
+
+.content-box {
+  width: auto;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.question-box {
+  border: 5px dashed var(--orange);
+  padding: 10% 0% 10% 0%;
+  margin: 0 5% 0 5%;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.option-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.option-boxes > button {
+  margin: 2%;
+  height: 30%;
+
+}
