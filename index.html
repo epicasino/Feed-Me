@@ -6,30 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   
-  <link rel="favicon" href="./assets/images/pixil-frame-0 (1).png">
   <!-- Reset.css -->
   <link rel="stylesheet" href="./assets/css/reset.css">
-  
-
-  <!-- Bootstrap CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   
   <!-- jQuery UI CDN -->
   
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   
-  
+  <!-- Bulma Css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
   <!-- Style.css -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
 
 </head>
 <body>
-  
-  <!-- Bootstrap CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <nav class="navbar p-3 is-flex is-justify-content-center" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <img id="navbar-logo" src="./assets/images/pixil-frame-0 (1).png"
+          alt="Feed Me: Recipe Searcher" height="75" width="75">
+      <h1 class="is-size-1">Feed Me.</h1>
+
+    </div>
+  </nav>
+
+  <main class="is-flex">
+
+    <div class="content-box column m-5">
+      <div class="question-box is-size-1 has-text-centered">Question Goes Here.</div>
+      <div class="option-boxes columns is-variable is-5">
+        <button id="option-a" class="button column is-5">Option A</button>
+        <button id="option-b" class="button column is-5">Option B</button>
+        <button id="option-c" class="button column is-5">Option C</button>
+        <button id="option-d" class="button column is-5">Option D</button>
+      </div>
+    </div>
+
+  </main>
 
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
@@ -38,5 +53,8 @@
   <!-- jQuery UI CDN -->
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   
+  <!-- Script.js -->
+  <script src="./assets/js/script.js"></script>
+
 </body>
 </html>
