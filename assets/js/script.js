@@ -8,12 +8,12 @@ const mapBox = {
 
 const query = {
   diet: ``,
-  healthLabel: ``,
-  cuisine: ``,
+  healthLabel: `vegetarian`,
+  cuisine: `Italian`,
   mealTime: ``,
   calories: ``,
   excluded: ``,
-  search: `American`,
+  // search: `Chicken`,
   time: ``,
 };
 
@@ -21,15 +21,35 @@ const query = {
 // https://docs.mapbox.com/playground/search-box/?q=Starbucks&language=en&session_token=0be1d0ab-b318-4ce1-8889-299c9730f4d0 API Reference for mapbox
 
 // Will get recipes based on query variable
-function request() {
+function requestEdamam() {
   fetch(
-    `https://api.edamam.com/api/recipes/v2?type=public&q=${query.search}&cuisine=${query.cuisine}&app_id=${edamam.appId}&app_key=${edamam.appKey}`
+    `https://api.edamam.com/api/recipes/v2?type=public&cuisineType=${query.cuisine}&health=${query.healthLabel}&app_id=${edamam.appId}&app_key=${edamam.appKey}`
   )
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
+      let results = {
+        recipes: [],
+        description: `3 recipe results Based on quiz results`,
+      };
+      
+      // Parsed data function, parsed data is stored in results.recipes as an array
+      function dataParsed() {
+        for (i = 0; i < 3; i++) {
+          let recipe = {
+            name: data.hits[i].recipe.label,
+            image: data.hits[i].recipe.image,
+            url: data.hits[i].recipe.url,
+            mealType: data.hits[i].recipe.mealType,
+            ingredients: data.hits[i].recipe.ingredientLines,
+          };
+          results.recipes.push(recipe);
+        }
+      }
+      dataParsed();
+      console.log(results);
     });
 }
 
@@ -59,5 +79,5 @@ function requestLocation() {
     });
 }
 
-request();
+requestEdamam();
 requestLocation();
