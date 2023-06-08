@@ -41,75 +41,65 @@
       <form id="food-form">
         <!-- allergies -->
         <div class="question" id="question1">
-          <label for="allergies">Any food allergies?</label><br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="nuts" id="nuts"> Nuts<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="dairy"> Dairy<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="shellfish"> Shellfish<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="gluten"> Gluten<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="eggs"> Eggs<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="fish"> Fish<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="peanuts"> Peanuts<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="wheat"> Wheat<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="soy">Soy<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="sesame">Sesame<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="mustard">Mustard<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="celery">Celery<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="lupin">Lupin<br>
-          <input type="checkbox" name="allergies" class="button column is-5" value="sulfites">Sulfites<br>
-          <input type="checkbox" name="allergies" class=" column is-5 button" value="mollusks">Mollusks<br>
-          <input type="checkbox" name="allergies" class=" column is-5 button" value="meat">Meat<br><br>
+          <label for="allergies">Any Food Allergies?</label><br>
+          <input type="checkbox" name="allergies" value="nuts" id="nuts"> Nuts<br>
+          <input type="checkbox" name="allergies" value="dairy"> Dairy</input><br>
+          <input type="checkbox" name="allergies" value="shellfish"> Shellfish</input><br>
+          <input type="checkbox" name="allergies" value="gluten"> Gluten</input><br>
+          <input type="checkbox" name="allergies" value="peanuts"> Peanuts</input><br>
+          <input type="checkbox" name="allergies" value="wheat"> Wheat</input><br>
+          <input type="checkbox" name="allergies" value="soy">Soy</input><br>
+          <button>Next 1/6</button><br><br>
         </div>
                 <!-- diet restrictions -->
         <div class="question" id="question2">
-          <label for="diet-restrictions">Choose a Dietary Restriction:</label><br>
+          <label for="diet-restrictions">Do You Have Any Other Dietary Restriction?</label><br>
           <input type="checkbox" name="restrictions" value="gluten-free">Gluten-Free<br>
-          <input type="checkbox" name="restrictions" value="dairy-free">Dairy-Free<br>
           <input type="checkbox" name="restrictions" value="vegan">Vegan<br>
           <input type="checkbox" name="restrictions" value="vegetarian">Vegetarian<br>
-          <input type="checkbox" name="restrictions" value="pescatarian">Pescatarian<br>
           <input type="checkbox" name="restrictions" value="ketogenic">Ketogenic<br>
-          <input type="checkbox" name="restrictions" value="paleo">Paleo<br>
-          <input type="checkbox" name="restrictions" value="low-fodmap">Low FODMAP<br>
-          <input type="checkbox" name="restrictions" value="low-sodium">Low Sodium<br>
-          <input type="checkbox" name="restrictions" value="low-fat">Low Fat<br>
-          <input type="checkbox" name="restrictions" value="sugar-free">Sugar-Free<br><br>
+          <button>Next 2/6</button><br><br>
         </div>
               <!-- meal-time -->
         <div class="question" id="question3">
-          <label for="meal-time">Preferred mealtime?</label>
-            <select id="meal-time">
-              <option name="meal-time" value="breakfast">Breakfast</option>
-              <option name="meal-time" value="lunch">Lunch</option>
-              <option name="meal-time" value="dinner">Dinner</option>
-              <option name="meal-time" value="snack">Snack</option>
-              <option name="meal-time" value="dessert">Dessert</option>
-            </select><br><br>
+          <label for="meal-time">Preferred Mealtime?</label>
+              <input type ="radio" name="meal-time" value="breakfast">Breakfast<br>
+              <input type ="radio" name="meal-time" value="lunch">Lunch<br>
+              <input type ="radio" name="meal-time" value="dinner">Dinner<br>
+              <input type ="radio" name="meal-time" value="snack">Snack<br>
+              <input type ="radio" name="meal-time" value="dessert">Dessert<br>
+              <button>Next 3/6</button><br><br>
         </div>
             <!-- prep-time -->
         <div class="question" id="question4">
-          <label for="prep-time">Preferred preparation time?</label>
-          <select id="prep-time">
-            <option value="quick">Quick (less than 30 minutes)</option>
-            <option value="moderate">Moderate (30-60 minutes)</option>
-            <option value="long">Long (more than 60 minutes)</option>
-          </select><br><br>
+          <label for="prep-time">Preferred Preparation Time?</label>
+            <input type="radio" value="quick">Quick (less than 30 minutes)<br>
+            <input type="radio" value="moderate">Moderate (30-60 minutes)<br>
+            <input type="radio" value="long">Long (more than 60 minutes)<br>
+            <button>Next 4/6</button><br><br>
         </div>
               <!-- type of food -->
         <div class="question" id="question5">
-          <label for="cuisine">Preferred cuisine?</label><br>
-            <input type="radio" name="cuisine" value="italian">Italian</input><br>
-            <input type="radio" name="cuisine" value="french">French</input><br>
-            <input type="radio" name="cuisine" value="mexican">Mexican</input><br>
-            <input type="radio" name="cuisine" value="indian">Indian</input><br>
-            <input type="radio" name="cuisine" value="chinese">Chinese</input><br>
-            <input type="radio" name="cuisine" value="japanese">Japanese</input><br>
-            <input type="radio" name="cuisine" value="thai">Thai</input><br>
-            <input type="radio" name="cuisine" value="greek">Greek</input><br>
-            <input type="radio" name="cuisine" value="spanish">Spanish</input><br>
-            <input type="radio" name="cuisine" value="middle-eastern">Middle Eastern</input><br>
+          <label for="cuisine">Preferred Cuisine?</label><br>
+            <input type="radio" name="cuisine" value="italian">Italian<br>
+            <input type="radio" name="cuisine" value="american">American<br>
+            <input type="radio" name="cuisine" value="mexican">Mexican<br>
+            <input type="radio" name="cuisine" value="asian">Asian<br>
+            <input type="radio" name="cuisine" value="middle-eastern">Middle Eastern<br>
+            <button>Next 5/6</button><br><br>
+        </div>
+            <!-- calories -->
+        <div class="question" id="question6">
+          <label for="calories">How Many Calories?</label><br>
+            <input type="radio" name="calories" value="100-500">100-500<br>
+            <input type="radio" name="calories" value="600-900">600-900<br>
+            <input type="radio" name="calories" value="1000-1500">1000-1500<br>
+            <input type="radio" name="calories" value="2000-2500">2000-2500<br>
+            <input type="radio" name="calories" value="2500+">2500+<br>
+            <button type="submit">Submit</button><br><br>
         </div>
             
-        <button type="submit">Submit</button>
+        
       </form>
 
       <div id="result"></div>
