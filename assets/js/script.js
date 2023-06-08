@@ -54,41 +54,53 @@ function requestEdamam() {
     });
 }
 
+// gets the content-box class element from html
 const contentBoxEl = document.querySelector(".content-box");
 
+// creates cards based on results from recipe finder
 function resultsCard(results) {
+  // creates div container for cards, bulma column class and justify-content flex properties set
   const cardsContainerEl = document.createElement("div");
   cardsContainerEl.setAttribute(
     "class",
     "columns is-flex is-justify-content-space-evenly"
   );
 
+  // for loop to create 3 cards (or more but results are capped at 3)
   contentBoxEl.appendChild(cardsContainerEl);
   for (i = 0; i < results.recipes.length; i++) {
+    // sets container and class attribute for card
     const cardBoxEl = document.createElement("div");
     cardBoxEl.setAttribute("class", "card column is-3");
 
+    // sets container for image inside of cardBoxEl div container
     const cardImgDivEl = document.createElement("div");
     cardImgDivEl.setAttribute("class", "card-image");
 
+    // figure tag created inside of cardImgDivEl div container for bulma image responsiveness
     const cardImgFigureEl = document.createElement("figure");
     cardImgFigureEl.setAttribute("class", "image is-128x128");
 
+    // img tag w/ recipe result image url attribute created inside of cardImgFigureEl div container
     const cardImgEl = document.createElement("img");
     cardImgEl.setAttribute("src", results.recipes[i].image);
 
     const cardMediaEl = document.createElement("div");
     cardMediaEl.setAttribute("class", "media-content");
 
+    // recipe title name inside of cardBoxEl div container
     const cardMediaTitleEl = document.createElement("p");
     cardMediaTitleEl.setAttribute("class", "title is-4");
 
+    // placeholder text (will be populated) inside of cardBoxEl div container
     const cardContentEl = document.createElement("div");
     cardContentEl.setAttribute("class", "content");
 
+    // textcontent for above text
     cardMediaTitleEl.textContent = results.recipes[i].name;
     cardContentEl.textContent = `placeholder`;
 
+    // appends child elements to parent elements, and those parent elements are children to cardsContainerEl parent element
     cardImgFigureEl.appendChild(cardImgEl);
     cardImgDivEl.appendChild(cardImgFigureEl);
     cardBoxEl.appendChild(cardImgDivEl);
@@ -99,8 +111,8 @@ function resultsCard(results) {
     cardBoxEl.appendChild(cardContentEl);
 
     cardsContainerEl.appendChild(cardBoxEl);
-  };
-};
+  }
+}
 
 // Will get random recipe from themealdb api
 // https://www.themealdb.com/api.php api for reference
