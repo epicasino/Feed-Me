@@ -1,60 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  
+  <title>FeedMe</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="./assets/images/pixil-frame-0 (1).png">
+
   <!-- Reset.css -->
   <link rel="stylesheet" href="./assets/css/reset.css">
-  
+
   <!-- jQuery UI CDN -->
-  
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  
-  <!-- Bulma Css -->
+
+  <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
   <!-- Style.css -->
   <link rel="stylesheet" href="./assets/css/style.css">
-
-
 </head>
-<body>
 
+<body>
   <nav class="navbar p-3 is-flex is-justify-content-center" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <img id="navbar-logo" src="./assets/images/pixil-frame-0 (1).png"
-          alt="Feed Me: Recipe Searcher" height="75" width="75">
+      <img id="navbar-logo" src="./assets/images/pixil-frame-0 (1).png" alt="Feed Me: Recipe Searcher" height="75"
+        width="75">
       <h1 class="is-size-1">Feed Me.</h1>
-
     </div>
   </nav>
 
   <main class="is-flex">
 
-    <div class="content-box column m-5">
-      <div class="question-box is-size-1 has-text-centered">Question Goes Here.</div>
-      <div class="option-boxes columns is-variable is-5">
-        <button id="option-a" class="button column is-5">Option A</button>
-        <button id="option-b" class="button column is-5">Option B</button>
-        <button id="option-c" class="button column is-5">Option C</button>
-        <button id="option-d" class="button column is-5">Option D</button>
-      </div>
-    </div>
+    <!-- food selection quiz -->
+    <section class="content-box column m-5">
+      <h1 class="question-box is-size-1 has-text-centered">What to FeedMe</h1><br>
 
+      <form id="food-form">
+        <!-- allergies -->
+        <div class="question" id="question1">
+          <label for="allergies">Any food allergies?</label><br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="nuts" id="nuts"> Nuts<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="dairy"> Dairy<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="shellfish"> Shellfish<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="gluten"> Gluten<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="eggs"> Eggs<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="fish"> Fish<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="peanuts"> Peanuts<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="wheat"> Wheat<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="soy">Soy<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="sesame">Sesame<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="mustard">Mustard<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="celery">Celery<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="lupin">Lupin<br>
+          <input type="checkbox" name="allergies" class="button column is-5" value="sulfites">Sulfites<br>
+          <input type="checkbox" name="allergies" class=" column is-5 button" value="mollusks">Mollusks<br>
+          <input type="checkbox" name="allergies" class=" column is-5 button" value="meat">Meat<br><br>
+        </div>
+                <!-- diet restrictions -->
+        <div class="question" id="question2">
+          <label for="diet-restrictions">Choose a Dietary Restriction:</label><br>
+          <input type="checkbox" name="restrictions" value="gluten-free">Gluten-Free<br>
+          <input type="checkbox" name="restrictions" value="dairy-free">Dairy-Free<br>
+          <input type="checkbox" name="restrictions" value="vegan">Vegan<br>
+          <input type="checkbox" name="restrictions" value="vegetarian">Vegetarian<br>
+          <input type="checkbox" name="restrictions" value="pescatarian">Pescatarian<br>
+          <input type="checkbox" name="restrictions" value="ketogenic">Ketogenic<br>
+          <input type="checkbox" name="restrictions" value="paleo">Paleo<br>
+          <input type="checkbox" name="restrictions" value="low-fodmap">Low FODMAP<br>
+          <input type="checkbox" name="restrictions" value="low-sodium">Low Sodium<br>
+          <input type="checkbox" name="restrictions" value="low-fat">Low Fat<br>
+          <input type="checkbox" name="restrictions" value="sugar-free">Sugar-Free<br><br>
+        </div>
+              <!-- meal-time -->
+        <div class="question" id="question3">
+          <label for="meal-time">Preferred mealtime?</label>
+            <select id="meal-time">
+              <option name="meal-time" value="breakfast">Breakfast</option>
+              <option name="meal-time" value="lunch">Lunch</option>
+              <option name="meal-time" value="dinner">Dinner</option>
+              <option name="meal-time" value="snack">Snack</option>
+              <option name="meal-time" value="dessert">Dessert</option>
+            </select><br><br>
+        </div>
+            <!-- prep-time -->
+        <div class="question" id="question4">
+          <label for="prep-time">Preferred preparation time?</label>
+          <select id="prep-time">
+            <option value="quick">Quick (less than 30 minutes)</option>
+            <option value="moderate">Moderate (30-60 minutes)</option>
+            <option value="long">Long (more than 60 minutes)</option>
+          </select><br><br>
+        </div>
+              <!-- type of food -->
+        <div class="question" id="question5">
+          <label for="cuisine">Preferred cuisine?</label><br>
+            <input type="radio" name="cuisine" value="italian">Italian</input><br>
+            <input type="radio" name="cuisine" value="french">French</input><br>
+            <input type="radio" name="cuisine" value="mexican">Mexican</input><br>
+            <input type="radio" name="cuisine" value="indian">Indian</input><br>
+            <input type="radio" name="cuisine" value="chinese">Chinese</input><br>
+            <input type="radio" name="cuisine" value="japanese">Japanese</input><br>
+            <input type="radio" name="cuisine" value="thai">Thai</input><br>
+            <input type="radio" name="cuisine" value="greek">Greek</input><br>
+            <input type="radio" name="cuisine" value="spanish">Spanish</input><br>
+            <input type="radio" name="cuisine" value="middle-eastern">Middle Eastern</input><br>
+        </div>
+            
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="result"></div>
+    </section>
   </main>
 
-  <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-    crossorigin="anonymous"></script>
-
-  <!-- jQuery UI CDN -->
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  
-  <!-- Script.js -->
   <script src="./assets/js/script.js"></script>
-
 </body>
+
 </html>
