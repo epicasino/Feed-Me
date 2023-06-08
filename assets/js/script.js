@@ -9,8 +9,8 @@ const mapBox = {
 
 const query = {
   diet: ``,
-  healthLabel: `vegetarian`,
-  cuisine: `italian`,
+  healthLabel: `kosher`,
+  cuisine: `american`,
   mealTime: ``,
   calories: ``,
   excluded: ``,
@@ -50,7 +50,56 @@ function requestEdamam() {
       }
       dataParsed();
       console.log(results);
+      resultsCard(results);
     });
+}
+
+const contentBoxEl = document.querySelector(".content-box");
+
+function resultsCard(results) {
+  const cardsContainerEl = document.createElement("div");
+  cardsContainerEl.setAttribute(
+    "class",
+    "columns is-flex is-justify-content-space-evenly"
+  );
+
+  contentBoxEl.appendChild(cardsContainerEl);
+  for (i = 0; i < results.recipes.length; i++) {
+    const cardBoxEl = document.createElement("div");
+    cardBoxEl.setAttribute("class", "card column is-3");
+
+    const cardImgDivEl = document.createElement("div");
+    cardImgDivEl.setAttribute("class", "card-image");
+
+    const cardImgFigureEl = document.createElement("figure");
+    cardImgFigureEl.setAttribute("class", "image is-128x128");
+
+    const cardImgEl = document.createElement("img");
+    cardImgEl.setAttribute("src", results.recipes[i].image);
+
+    const cardMediaEl = document.createElement("div");
+    cardMediaEl.setAttribute("class", "media-content");
+
+    const cardMediaTitleEl = document.createElement("p");
+    cardMediaTitleEl.setAttribute("class", "title is-4");
+
+    const cardContentEl = document.createElement("div");
+    cardContentEl.setAttribute("class", "content");
+
+    cardMediaTitleEl.textContent = results.recipes[i].name;
+    cardContentEl.textContent = `placeholder`;
+
+    cardImgFigureEl.appendChild(cardImgEl);
+    cardImgDivEl.appendChild(cardImgFigureEl);
+    cardBoxEl.appendChild(cardImgDivEl);
+
+    cardMediaEl.appendChild(cardMediaTitleEl);
+    cardBoxEl.appendChild(cardMediaEl);
+
+    cardBoxEl.appendChild(cardContentEl);
+
+    cardsContainerEl.appendChild(cardBoxEl);
+  };
 };
 
 // Will get random recipe from themealdb api
@@ -68,10 +117,10 @@ function randomRecipe() {
         image: data.meals[0].strMealThumb,
         url: data.meals[0].strSource,
       };
-      console.log(`Random Recipe:`)
+      console.log(`Random Recipe:`);
       console.log(recipe);
     });
-};
+}
 
 // Will make location suggestions based on user's lat & lon
 // https://docs.mapbox.com/playground/search-box/?q=Starbucks&language=en&session_token=0be1d0ab-b318-4ce1-8889-299c9730f4d0 API Reference for mapbox
@@ -87,7 +136,7 @@ function requestMapBox(lat, lon) {
       let results = {
         locations: [],
         description: `5 location suggestions from mapbox`,
-      }
+      };
       function dataParsed() {
         for (i = 0; i < data.suggestions.length; i++) {
           let location = {
@@ -95,12 +144,12 @@ function requestMapBox(lat, lon) {
             address: data.suggestions[i].full_address,
           };
           results.locations.push(location);
-        };
-      };
+        }
+      }
       dataParsed();
       console.log(results);
     });
-};
+}
 
 // Will get location based on IP from ipapi API -> will pass lat & lon to mapbox for suggestions
 function requestLocation() {
@@ -110,10 +159,12 @@ function requestLocation() {
     })
     .then(function (data) {
       // console.log(data);
-      console.log(`User Location- Lat: ${data.latitude}, Lon: ${data.longitude}`);
+      console.log(
+        `User Location- Lat: ${data.latitude}, Lon: ${data.longitude}`
+      );
       requestMapBox(data.latitude, data.longitude);
     });
-};
+}
 
 requestEdamam();
 requestLocation();
