@@ -8,15 +8,84 @@ const mapBox = {
 };
 
 const query = {
-  diet: ``,
-  healthLabel: `kosher`,
+  diet: `vegan`,
+  excluded: `peanuts`,
+  mealTime: `breakfast`,
+  time: `less than 30 minutes`,
   cuisine: `american`,
-  mealTime: ``,
-  calories: ``,
-  excluded: ``,
-  // search: `Chicken`,
-  time: ``,
+  calories: `50-200`,
 };
+
+const questionBoxEl = document.querySelector(".question-box");
+const optionBoxesEl = document.querySelector(".option-boxes");
+
+// Array for the form questions for recipe searcher api
+const formQuestionsArray = [
+  {
+    question: `Dietary Preferences?`,
+    options: [`Vegan`, `Keto-Friendly`, `Vegetarian`, `None`],
+  },
+  {
+    question: `Allergies?`,
+    options: ["Tree-Nuts", "Peanuts", "Milk", "None"],
+  },
+  {
+    question: "Mealtime?",
+    options: ["Breakfast", "Lunch", "Dinner", "Snack"],
+  },
+  {
+    question: "Prep-time?",
+    options: [
+      "less than 30 minutes",
+      "30-60 minutes",
+      "60-90 minutes",
+      "more than 90 minutes",
+    ],
+  },
+  {
+    question: "Type of Cuisine?",
+    options: ["Italian", "American", "Mexican", "Asian"],
+  },
+  {
+    question: "How Many Calories?",
+    options: ["50-200", "200-500", "500-800", "more than 800"],
+  },
+];
+
+// this is set to be our current question index
+let currentQuestionIndex = 0; // this will start at diet
+// this will update our query - which is 
+function updateQuery(event) {
+  // set the selected option by grabbing the event.target.textContent
+  const selectedOption = event.target.textContent;
+  // query properties, starts at diet because we set currentquestionindex to 0 
+  const queryProperties = ['diet', 'excluded', 'mealTime', 'time', 'cuisine', 'calories'];
+  
+  // basically query.diet or query.excluded - wherver you are in the currentquestionindex
+  query[queryProperties[currentQuestionIndex]] = selectedOption;
+  console.log(query);
+  console.log(selectedOption);
+  currentQuestionIndex++;
+  // conditional that says as long as we still have questions, we will display the next question
+  if (currentQuestionIndex < formQuestionsArray.length) {
+    displayQuestion(); // displays question
+  }
+}
+function displayQuestion() {
+  // will display questions in order of index position 
+  const currentQuestion = formQuestionsArray[currentQuestionIndex];
+  // we set our html element to the current question
+  questionBoxEl.textContent = currentQuestion.question;
+  
+  for (let i = 0; i < currentQuestion.options.length; i++) {
+    // set the text content of the options
+    optionBoxesEl.children[i].textContent = currentQuestion.options[i];
+    // listen for lcick
+    optionBoxesEl.children[i].addEventListener("click", updateQuery);
+  }
+}
+displayQuestion(); // call our display question function
+
 
 // Will get recipes based on query variable
 // https://developer.edamam.com/edamam-docs-recipe-api#/ API Reference for edamam
@@ -28,7 +97,7 @@ function requestEdamam() {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
+       console.log(data);
       let results = {
         recipes: [],
         description: `3 recipe results Based on quiz results`,
@@ -48,7 +117,7 @@ function requestEdamam() {
           results.recipes.push(recipe);
         }
       }
-      dataParsed();
+       dataParsed();
       console.log(results);
       resultsCard(results);
     });
@@ -178,6 +247,78 @@ function requestLocation() {
     });
 }
 
-requestEdamam();
+ requestEdamam();
 requestLocation();
-randomRecipe();
+ randomRecipe();
+
+var formEl = document.getElementById("food-form");
+formEl.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  // Store the list of questions
+  var questions = document.querySelectorAll(".question");
+  var currentQuestionIndex = 0;
+
+  // Function to show the current question
+  function showCurrentQuestion() {
+    for (var i = 0; i < questions.length; i++) {
+      var question = questions[i];
+      if (i === currentQuestionIndex) {
+        question.style.display = "block";
+      } else {
+        question.style.display = "none";
+      }
+    }
+  }
+
+  // Function to handle form submission
+  function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get user inputs
+    var allergies = [];
+    var checkboxes = document.getElementsByName("allergies");
+    for (var i = 0; i < checkboxes.length; i++) {
+      var checkbox = checkboxes[i];
+      if (checkbox.checked) {
+        allergies.push(checkbox.value);
+      }
+    }
+    var dietRestrictions = document.querySelector(
+      'input[name="restrictions"]:checked'
+    ).value;
+    var mealTime = document.querySelector(
+      'input[name="meal-time"]:checked'
+    ).value;
+    var prepTime = document.querySelector(
+      'input[name="prep-time"]:checked'
+    ).value;
+    var cuisine = document.querySelector('input[name="cuisine"]:checked').value;
+
+    // Perform decision-making logic
+    var result = "Based on your inputs:<br>";
+    result += "- Allergies: " + allergies.join(", ") + "<br>";
+    result += "- Diet Restrictions: " + dietRestrictions + "<br>";
+    result += "- Meal Time: " + mealTime + "<br>";
+    result += "- Prep Time: " + prepTime + "<br>";
+    result += "- Cuisine: " + cuisine + "<br>";
+    result += "<br>Here's a suggestion: [Your suggestion goes here]";
+
+    // Display the result
+    document.getElementById("result").innerHTML = result;
+
+    // Move to the next question
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      showCurrentQuestion();
+    }
+  }
+
+  // Attach event listener to the form submit
+  document
+    .getElementById("food-form")
+    .addEventListener("submit", handleFormSubmit);
+
+  // Show the first question initially
+  showCurrentQuestion();
+});
