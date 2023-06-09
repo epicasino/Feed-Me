@@ -52,115 +52,40 @@ const formQuestionsArray = [
   },
 ];
 
-function FirstQuestion() {
-  // Makes question text the first question in array
-  questionBoxEl.textContent = formQuestionsArray[0].question;
-  // For loop assigns option array from formQuestionsArray to the four option boxes
-  var testArray = [query.diet, query.excluded];
-  for (let i = 0; i < formQuestionsArray[0].options.length; i++) {
-    optionBoxesEl.children[i].textContent = formQuestionsArray[0].options[i];
-
-    optionBoxesEl.children[i].addEventListener("click", function (event) {
-      // event.stopPropagation();
-
-      testArray[i] = event.target.textContent;
-      console.log(query);
-      console.log(event.target.textContent);
-
-      // event.stopImmediatePropagation();
-
-      SecondQuestion();
-    });
+// this is set to be our current question index
+let currentQuestionIndex = 0; // this will start at diet
+// this will update our query - which is 
+function updateQuery(event) {
+  // set the selected option by grabbing the event.target.textContent
+  const selectedOption = event.target.textContent;
+  // query properties, starts at diet because we set currentquestionindex to 0 
+  const queryProperties = ['diet', 'excluded', 'mealTime', 'time', 'cuisine', 'calories'];
+  
+  // basically query.diet or query.excluded - wherver you are in the currentquestionindex
+  query[queryProperties[currentQuestionIndex]] = selectedOption;
+  console.log(query);
+  console.log(selectedOption);
+  currentQuestionIndex++;
+  // conditional that says as long as we still have questions, we will display the next question
+  if (currentQuestionIndex < formQuestionsArray.length) {
+    displayQuestion(); // displays question
   }
 }
-function SecondQuestion() {
-  // Makes question text the second question in array
-  questionBoxEl.textContent = formQuestionsArray[1].question;
-  // For loop assigns option array from formQuestionsArray to the four option boxes
-  for (let i = 0; i < formQuestionsArray[1].options.length; i++) {
-    //
-    optionBoxesEl.children[i].textContent = formQuestionsArray[1].options[i];
-
-    optionBoxesEl.children[i].addEventListener("click", function (event) {
-      // event.stopPropagation();
-
-      query.excluded = event.target.textContent;
-      console.log(query);
-      event.stopImmediatePropagation();
-      ThirdQuestion();
-    });
+function displayQuestion() {
+  // will display questions in order of index position 
+  const currentQuestion = formQuestionsArray[currentQuestionIndex];
+  // we set our html element to the current question
+  questionBoxEl.textContent = currentQuestion.question;
+  
+  for (let i = 0; i < currentQuestion.options.length; i++) {
+    // set the text content of the options
+    optionBoxesEl.children[i].textContent = currentQuestion.options[i];
+    // listen for lcick
+    optionBoxesEl.children[i].addEventListener("click", updateQuery);
   }
 }
-function ThirdQuestion() {
-  // Makes question text the third question in array
-  questionBoxEl.textContent = formQuestionsArray[2].question;
-  // For loop assigns option array from formQuestionsArray to the four option boxes
-  for (let i = 0; i < formQuestionsArray[2].options.length; i++) {
-    //
-    optionBoxesEl.children[i].textContent = formQuestionsArray[2].options[i];
+displayQuestion(); // call our display question function
 
-    optionBoxesEl.children[i].addEventListener("click", function (event) {
-      // event.stopPropagation();
-      query.mealTime = formQuestionsArray[2].options[i];
-      console.log(query);
-      console.log(event);
-      event.stopImmediatePropagation();
-      FourthQuestion();
-    });
-  }
-}
-function FourthQuestion() {
-  // Makes question text the fourth question in array
-  questionBoxEl.textContent = formQuestionsArray[3].question;
-  // For loop assigns option array from formQuestionsArray to the four option boxes
-  for (let i = 0; i < formQuestionsArray[3].options.length; i++) {
-    //
-    optionBoxesEl.children[i].textContent = formQuestionsArray[3].options[i];
-
-    optionBoxesEl.children[i].addEventListener("click", function (event) {
-      // event.stopPropagation();
-      query.time = formQuestionsArray[3].options[i];
-      console.log(query);
-      event.stopImmediatePropagation();
-      FifthQuestion();
-    });
-  }
-}
-function FifthQuestion() {
-  // Makes question text the fifth question in array
-  questionBoxEl.textContent = formQuestionsArray[4].question;
-  // For loop assigns option array from formQuestionsArray to the four option boxes
-  for (let i = 0; i < formQuestionsArray[4].options.length; i++) {
-    //
-    optionBoxesEl.children[i].textContent = formQuestionsArray[4].options[i];
-
-    optionBoxesEl.children[i].addEventListener("click", function (event) {
-      // event.stopPropagation();
-      query.cuisine = formQuestionsArray[4].options[i];
-      console.log(query);
-      event.stopImmediatePropagation();
-      SixthQuestion();
-    });
-  }
-}
-function SixthQuestion() {
-  // Makes question text the sixth question in array
-  questionBoxEl.textContent = formQuestionsArray[5].question;
-  // For loop assigns option array from formQuestionsArray to the four option boxes
-  for (let i = 0; i < formQuestionsArray[5].options.length; i++) {
-    //
-    optionBoxesEl.children[i].textContent = formQuestionsArray[5].options[i];
-
-    optionBoxesEl.children[i].addEventListener("click", function (event) {
-      // event.stopPropagation();
-      query.calories = formQuestionsArray[5].options[i];
-      console.log(query);
-      event.stopImmediatePropagation();
-    });
-  }
-}
-
-FirstQuestion();
 
 // Will get recipes based on query variable
 // https://developer.edamam.com/edamam-docs-recipe-api#/ API Reference for edamam
@@ -172,7 +97,7 @@ function requestEdamam() {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
+       console.log(data);
       let results = {
         recipes: [],
         description: `3 recipe results Based on quiz results`,
@@ -192,7 +117,7 @@ function requestEdamam() {
           results.recipes.push(recipe);
         }
       }
-      // dataParsed();
+       dataParsed();
       console.log(results);
       resultsCard(results);
     });
@@ -322,78 +247,78 @@ function requestLocation() {
     });
 }
 
-// requestEdamam();
+ requestEdamam();
 requestLocation();
-// randomRecipe();
+ randomRecipe();
 
-// var formEl = document.getElementById("food-form");
-// formEl.addEventListener("submit", function (event) {
-//   event.preventDefault();
+var formEl = document.getElementById("food-form");
+formEl.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-//   // Store the list of questions
-//   var questions = document.querySelectorAll(".question");
-//   var currentQuestionIndex = 0;
+  // Store the list of questions
+  var questions = document.querySelectorAll(".question");
+  var currentQuestionIndex = 0;
 
-//   // Function to show the current question
-//   function showCurrentQuestion() {
-//     for (var i = 0; i < questions.length; i++) {
-//       var question = questions[i];
-//       if (i === currentQuestionIndex) {
-//         question.style.display = "block";
-//       } else {
-//         question.style.display = "none";
-//       }
-//     }
-//   }
+  // Function to show the current question
+  function showCurrentQuestion() {
+    for (var i = 0; i < questions.length; i++) {
+      var question = questions[i];
+      if (i === currentQuestionIndex) {
+        question.style.display = "block";
+      } else {
+        question.style.display = "none";
+      }
+    }
+  }
 
-//   // Function to handle form submission
-//   function handleFormSubmit(event) {
-//     event.preventDefault(); // Prevent form submission
+  // Function to handle form submission
+  function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent form submission
 
-//     // Get user inputs
-//     var allergies = [];
-//     var checkboxes = document.getElementsByName("allergies");
-//     for (var i = 0; i < checkboxes.length; i++) {
-//       var checkbox = checkboxes[i];
-//       if (checkbox.checked) {
-//         allergies.push(checkbox.value);
-//       }
-//     }
-//     var dietRestrictions = document.querySelector(
-//       'input[name="restrictions"]:checked'
-//     ).value;
-//     var mealTime = document.querySelector(
-//       'input[name="meal-time"]:checked'
-//     ).value;
-//     var prepTime = document.querySelector(
-//       'input[name="prep-time"]:checked'
-//     ).value;
-//     var cuisine = document.querySelector('input[name="cuisine"]:checked').value;
+    // Get user inputs
+    var allergies = [];
+    var checkboxes = document.getElementsByName("allergies");
+    for (var i = 0; i < checkboxes.length; i++) {
+      var checkbox = checkboxes[i];
+      if (checkbox.checked) {
+        allergies.push(checkbox.value);
+      }
+    }
+    var dietRestrictions = document.querySelector(
+      'input[name="restrictions"]:checked'
+    ).value;
+    var mealTime = document.querySelector(
+      'input[name="meal-time"]:checked'
+    ).value;
+    var prepTime = document.querySelector(
+      'input[name="prep-time"]:checked'
+    ).value;
+    var cuisine = document.querySelector('input[name="cuisine"]:checked').value;
 
-//     // Perform decision-making logic
-//     var result = "Based on your inputs:<br>";
-//     result += "- Allergies: " + allergies.join(", ") + "<br>";
-//     result += "- Diet Restrictions: " + dietRestrictions + "<br>";
-//     result += "- Meal Time: " + mealTime + "<br>";
-//     result += "- Prep Time: " + prepTime + "<br>";
-//     result += "- Cuisine: " + cuisine + "<br>";
-//     result += "<br>Here's a suggestion: [Your suggestion goes here]";
+    // Perform decision-making logic
+    var result = "Based on your inputs:<br>";
+    result += "- Allergies: " + allergies.join(", ") + "<br>";
+    result += "- Diet Restrictions: " + dietRestrictions + "<br>";
+    result += "- Meal Time: " + mealTime + "<br>";
+    result += "- Prep Time: " + prepTime + "<br>";
+    result += "- Cuisine: " + cuisine + "<br>";
+    result += "<br>Here's a suggestion: [Your suggestion goes here]";
 
-//     // Display the result
-//     document.getElementById("result").innerHTML = result;
+    // Display the result
+    document.getElementById("result").innerHTML = result;
 
-//     // Move to the next question
-//     currentQuestionIndex++;
-//     if (currentQuestionIndex < questions.length) {
-//       showCurrentQuestion();
-//     }
-//   }
+    // Move to the next question
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      showCurrentQuestion();
+    }
+  }
 
-//   // Attach event listener to the form submit
-//   document
-//     .getElementById("food-form")
-//     .addEventListener("submit", handleFormSubmit);
+  // Attach event listener to the form submit
+  document
+    .getElementById("food-form")
+    .addEventListener("submit", handleFormSubmit);
 
-//   // Show the first question initially
-//   showCurrentQuestion();
-// });
+  // Show the first question initially
+  showCurrentQuestion();
+});
