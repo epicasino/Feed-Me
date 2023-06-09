@@ -8,14 +8,12 @@ const mapBox = {
 };
 
 const query = {
-  diet: ``,
-  healthLabel: `kosher`,
+  diet: `vegan`,
+  excluded: `peanuts`,
+  mealTime: `breakfast`,
+  time: `less than 30 minutes`,
   cuisine: `american`,
-  mealTime: ``,
-  calories: ``,
-  excluded: ``,
-  // search: `Chicken`,
-  time: ``,
+  calories: `50-200`,
 };
 
 const questionBoxEl = document.querySelector(".question-box");
@@ -29,7 +27,28 @@ const formQuestionsArray = [
   },
   {
     question: `Allergies?`,
-    // continue form array to have all questions in issues on github
+    options: ["Tree-Nuts", "Peanuts", "Milk", "None"],
+  },
+  {
+    question: "Mealtime?",
+    options: ["Breakfast", "Lunch", "Dinner", "Snack"],
+  },
+  {
+    question: "Prep-time?",
+    options: [
+      "less than 30 minutes",
+      "30-60 minutes",
+      "60-90 minutes",
+      "more than 90 minutes",
+    ],
+  },
+  {
+    question: "Type of Cuisine?",
+    options: ["Italian", "American", "Mexican", "Asian"],
+  },
+  {
+    question: "How Many Calories?",
+    options: ["50-200", "200-500", "500-800", "more than 800"],
   },
 ];
 
@@ -37,20 +56,107 @@ function FirstQuestion() {
   // Makes question text the first question in array
   questionBoxEl.textContent = formQuestionsArray[0].question;
   // For loop assigns option array from formQuestionsArray to the four option boxes
-  for (i = 0; i < formQuestionsArray[0].options.length; i++) {
-    //
+  var testArray = [query.diet, query.excluded];
+  for (let i = 0; i < formQuestionsArray[0].options.length; i++) {
     optionBoxesEl.children[i].textContent = formQuestionsArray[0].options[i];
 
-    // WOULDNT RECOMMEND. But if you want to, here's a boilerplate for checkbox.
+    optionBoxesEl.children[i].addEventListener("click", function (event) {
+      // event.stopPropagation();
 
-    // const checkBoxEl = document.createElement('input');
-    // checkBoxEl.setAttribute('type', 'checkbox');
-    // checkBoxEl.setAttribute('name', 'options')
-    // const labelEl = document.createElement('label');
-    // labelEl.setAttribute('for', 'options');
-    // labelEl.textContent = formQuestionsArray[0].options[i];
-    // optionBoxesEl.appendChild(checkBoxEl);
-    // optionBoxesEl.appendChild(labelEl);
+      testArray[i] = event.target.textContent;
+      console.log(query);
+      console.log(event.target.textContent);
+
+      // event.stopImmediatePropagation();
+
+      SecondQuestion();
+    });
+  }
+}
+function SecondQuestion() {
+  // Makes question text the second question in array
+  questionBoxEl.textContent = formQuestionsArray[1].question;
+  // For loop assigns option array from formQuestionsArray to the four option boxes
+  for (let i = 0; i < formQuestionsArray[1].options.length; i++) {
+    //
+    optionBoxesEl.children[i].textContent = formQuestionsArray[1].options[i];
+
+    optionBoxesEl.children[i].addEventListener("click", function (event) {
+      // event.stopPropagation();
+
+      query.excluded = event.target.textContent;
+      console.log(query);
+      event.stopImmediatePropagation();
+      ThirdQuestion();
+    });
+  }
+}
+function ThirdQuestion() {
+  // Makes question text the third question in array
+  questionBoxEl.textContent = formQuestionsArray[2].question;
+  // For loop assigns option array from formQuestionsArray to the four option boxes
+  for (let i = 0; i < formQuestionsArray[2].options.length; i++) {
+    //
+    optionBoxesEl.children[i].textContent = formQuestionsArray[2].options[i];
+
+    optionBoxesEl.children[i].addEventListener("click", function (event) {
+      // event.stopPropagation();
+      query.mealTime = formQuestionsArray[2].options[i];
+      console.log(query);
+      console.log(event);
+      event.stopImmediatePropagation();
+      FourthQuestion();
+    });
+  }
+}
+function FourthQuestion() {
+  // Makes question text the fourth question in array
+  questionBoxEl.textContent = formQuestionsArray[3].question;
+  // For loop assigns option array from formQuestionsArray to the four option boxes
+  for (let i = 0; i < formQuestionsArray[3].options.length; i++) {
+    //
+    optionBoxesEl.children[i].textContent = formQuestionsArray[3].options[i];
+
+    optionBoxesEl.children[i].addEventListener("click", function (event) {
+      // event.stopPropagation();
+      query.time = formQuestionsArray[3].options[i];
+      console.log(query);
+      event.stopImmediatePropagation();
+      FifthQuestion();
+    });
+  }
+}
+function FifthQuestion() {
+  // Makes question text the fifth question in array
+  questionBoxEl.textContent = formQuestionsArray[4].question;
+  // For loop assigns option array from formQuestionsArray to the four option boxes
+  for (let i = 0; i < formQuestionsArray[4].options.length; i++) {
+    //
+    optionBoxesEl.children[i].textContent = formQuestionsArray[4].options[i];
+
+    optionBoxesEl.children[i].addEventListener("click", function (event) {
+      // event.stopPropagation();
+      query.cuisine = formQuestionsArray[4].options[i];
+      console.log(query);
+      event.stopImmediatePropagation();
+      SixthQuestion();
+    });
+  }
+}
+function SixthQuestion() {
+  // Makes question text the sixth question in array
+  questionBoxEl.textContent = formQuestionsArray[5].question;
+  // For loop assigns option array from formQuestionsArray to the four option boxes
+  for (let i = 0; i < formQuestionsArray[5].options.length; i++) {
+    //
+    optionBoxesEl.children[i].textContent = formQuestionsArray[5].options[i];
+
+    optionBoxesEl.children[i].addEventListener("click", function (event) {
+      // event.stopPropagation();
+      query.calories = formQuestionsArray[5].options[i];
+      console.log(query);
+      event.stopImmediatePropagation();
+    });
   }
 }
 
@@ -86,7 +192,7 @@ function requestEdamam() {
           results.recipes.push(recipe);
         }
       }
-      dataParsed();
+      // dataParsed();
       console.log(results);
       resultsCard(results);
     });
@@ -216,78 +322,78 @@ function requestLocation() {
     });
 }
 
-requestEdamam();
+// requestEdamam();
 requestLocation();
-randomRecipe();
+// randomRecipe();
 
-var formEl = document.getElementById("food-form");
-formEl.addEventListener("submit", function (event) {
-  event.preventDefault();
+// var formEl = document.getElementById("food-form");
+// formEl.addEventListener("submit", function (event) {
+//   event.preventDefault();
 
-  // Store the list of questions
-  var questions = document.querySelectorAll(".question");
-  var currentQuestionIndex = 0;
+//   // Store the list of questions
+//   var questions = document.querySelectorAll(".question");
+//   var currentQuestionIndex = 0;
 
-  // Function to show the current question
-  function showCurrentQuestion() {
-    for (var i = 0; i < questions.length; i++) {
-      var question = questions[i];
-      if (i === currentQuestionIndex) {
-        question.style.display = "block";
-      } else {
-        question.style.display = "none";
-      }
-    }
-  }
+//   // Function to show the current question
+//   function showCurrentQuestion() {
+//     for (var i = 0; i < questions.length; i++) {
+//       var question = questions[i];
+//       if (i === currentQuestionIndex) {
+//         question.style.display = "block";
+//       } else {
+//         question.style.display = "none";
+//       }
+//     }
+//   }
 
-  // Function to handle form submission
-  function handleFormSubmit(event) {
-    event.preventDefault(); // Prevent form submission
+//   // Function to handle form submission
+//   function handleFormSubmit(event) {
+//     event.preventDefault(); // Prevent form submission
 
-    // Get user inputs
-    var allergies = [];
-    var checkboxes = document.getElementsByName("allergies");
-    for (var i = 0; i < checkboxes.length; i++) {
-      var checkbox = checkboxes[i];
-      if (checkbox.checked) {
-        allergies.push(checkbox.value);
-      }
-    }
-    var dietRestrictions = document.querySelector(
-      'input[name="restrictions"]:checked'
-    ).value;
-    var mealTime = document.querySelector(
-      'input[name="meal-time"]:checked'
-    ).value;
-    var prepTime = document.querySelector(
-      'input[name="prep-time"]:checked'
-    ).value;
-    var cuisine = document.querySelector('input[name="cuisine"]:checked').value;
+//     // Get user inputs
+//     var allergies = [];
+//     var checkboxes = document.getElementsByName("allergies");
+//     for (var i = 0; i < checkboxes.length; i++) {
+//       var checkbox = checkboxes[i];
+//       if (checkbox.checked) {
+//         allergies.push(checkbox.value);
+//       }
+//     }
+//     var dietRestrictions = document.querySelector(
+//       'input[name="restrictions"]:checked'
+//     ).value;
+//     var mealTime = document.querySelector(
+//       'input[name="meal-time"]:checked'
+//     ).value;
+//     var prepTime = document.querySelector(
+//       'input[name="prep-time"]:checked'
+//     ).value;
+//     var cuisine = document.querySelector('input[name="cuisine"]:checked').value;
 
-    // Perform decision-making logic
-    var result = "Based on your inputs:<br>";
-    result += "- Allergies: " + allergies.join(", ") + "<br>";
-    result += "- Diet Restrictions: " + dietRestrictions + "<br>";
-    result += "- Meal Time: " + mealTime + "<br>";
-    result += "- Prep Time: " + prepTime + "<br>";
-    result += "- Cuisine: " + cuisine + "<br>";
-    result += "<br>Here's a suggestion: [Your suggestion goes here]";
+//     // Perform decision-making logic
+//     var result = "Based on your inputs:<br>";
+//     result += "- Allergies: " + allergies.join(", ") + "<br>";
+//     result += "- Diet Restrictions: " + dietRestrictions + "<br>";
+//     result += "- Meal Time: " + mealTime + "<br>";
+//     result += "- Prep Time: " + prepTime + "<br>";
+//     result += "- Cuisine: " + cuisine + "<br>";
+//     result += "<br>Here's a suggestion: [Your suggestion goes here]";
 
-    // Display the result
-    document.getElementById("result").innerHTML = result;
+//     // Display the result
+//     document.getElementById("result").innerHTML = result;
 
-    // Move to the next question
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-      showCurrentQuestion();
-    }
-  }
+//     // Move to the next question
+//     currentQuestionIndex++;
+//     if (currentQuestionIndex < questions.length) {
+//       showCurrentQuestion();
+//     }
+//   }
 
-  // Attach event listener to the form submit
-  document
-    .getElementById("food-form")
-    .addEventListener("submit", handleFormSubmit);
+//   // Attach event listener to the form submit
+//   document
+//     .getElementById("food-form")
+//     .addEventListener("submit", handleFormSubmit);
 
-  // Show the first question initially
-  showCurrentQuestion();
-});
+//   // Show the first question initially
+//   showCurrentQuestion();
+// });
