@@ -6,3 +6,13 @@ test questions (in no order):
 - prep-time
 - calories
 - allergies
+
+
+
+picture button: <a href="your-link-here">
+  <img src="your-image-source-here" alt="Description of the image">
+</a>
+
+picture click triggers a function: <button onclick="yourFunction()">
+  <img src="your-image-source-here" alt="Description of the image">
+</button>
