@@ -18,12 +18,22 @@ let edamamParameters = ``;
 // function that will check each query object & set parameters for edamam based on user's choices
 function queryFilter() {
   // todo: could turn into a for loop function i think
-  if (query.diet != `None`) {
-    edamamParameters += `&health=${query.diet}`;
-  }
-  if (query.excluded != `None`) {
-    edamamParameters += `&health=${query.excluded}`;
-  }
+  if (query.diet == `Vegan`) {
+    edamamParameters += `&health=vegan`;
+  } else if (query.diet == `Keto-Friendly`) {
+    edamamParameters += `&health=keto-friendly`;
+  } else if (query.diet == `Vegetarian`) {
+    edamamParameters += `&health=vegetarian`;
+  };
+
+  if (query.excluded == `Tree-Nuts`) {
+    edamamParameters += `&health=tree-nut-free`;
+  } else if (query.excluded == `Peanuts`) {
+    edamamParameters += `&health=peanut-free`;
+  } else if (query.excluded == `Milk`) {
+    edamamParameters += `&health=dairy-free`;
+  };
+
   if (query.mealTime != `None`) {
     edamamParameters += `&mealType=${query.mealTime}`;
   }
@@ -209,5 +219,4 @@ function requestLocation() {
     });
 }
 
-requestLocation();
 randomRecipe();

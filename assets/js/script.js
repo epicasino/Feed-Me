@@ -1,11 +1,11 @@
 
 const query = {
-  diet: `vegan`,
-  excluded: `peanuts`,
-  mealTime: `breakfast`,
-  time: `less than 30 minutes`,
-  cuisine: `american`,
-  calories: `50-200`,
+  diet: ``,
+  excluded: ``,
+  mealTime: ``,
+  time: ``,
+  cuisine: ``,
+  calories: ``,
 };
 
 const questionBoxEl = document.querySelector(".question-box");
