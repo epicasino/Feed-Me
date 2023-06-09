@@ -7,11 +7,23 @@
 
 body {
   background-color: var(--dark-red);
+  font-family: 'Lora', serif;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Noticia Text', serif;
+  font-family: 'Tinos', serif;
 }
 
 .navbar {
   background-color: var(--yellow);
   color: white;
+}
+
+.image img {
+  border-radius:64px !important;
+  -webkit-border-radius:64px !important;
+  -moz-border-radius:64px !important;
+  -ms-border-radius:64px !important;
+  -o-border-radius:64px !important;
 }
 
 .content-box {
