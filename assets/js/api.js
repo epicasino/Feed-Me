@@ -166,7 +166,7 @@ feelingLuckyBtnEl.addEventListener("click", randomRecipe);
 // Will get random recipe from themealdb api
 // https://www.themealdb.com/api.php api for reference
 function randomRecipe() {
-  fetch(`http://themealdb.com/api/json/v1/1/random.php`)
+  fetch(`https://themealdb.com/api/json/v1/1/random.php`)
     .then((response) => {
       return response.json();
     })
