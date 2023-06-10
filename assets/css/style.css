@@ -38,7 +38,8 @@ body {
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-  background-image: url(../images/dinner.jpg);
+  background-color: bisque;
+  
 }
 
 .question-box {
@@ -52,7 +53,7 @@ body {
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-  background-image: url(../images);
+  background-image: url(../images/dinner.jpg);
 }
 
 .option-boxes {
