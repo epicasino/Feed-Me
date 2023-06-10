@@ -70,6 +70,8 @@ function updateQuery(event) {
     displayQuestion(); // displays question
   } else if (currentQuestionIndex == formQuestionsArray.length ) {
     queryFilter();
+    optionBoxesEl.setAttribute('style', 'display: none');
+    feelingLuckyBtnEl.setAttribute('style', 'display:none')
   };
 }
 function displayQuestion() {
