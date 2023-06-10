@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: var(--dark-red);
+  background-color: var(--yellow);
   font-family: 'Lora', serif;
   font-family: 'Montserrat Alternates', sans-serif;
   font-family: 'Noticia Text', serif;
@@ -14,7 +14,7 @@ body {
 }
 
 .navbar {
-  background-color: var(--yellow);
+  background-color: var(--dark-red);
   color: white;
 }
 
@@ -49,6 +49,7 @@ body {
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
+  background-image:url();
 }
 
 .option-boxes {
@@ -60,5 +61,6 @@ body {
 .option-boxes > button {
   margin: 2%;
   height: 30%;
-
+  background-color: var(--orange);
+  color: white;
 }
