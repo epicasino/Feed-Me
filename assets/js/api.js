@@ -101,6 +101,7 @@ function requestEdamam() {
 
 // gets the content-box class element from html
 const contentBoxEl = document.querySelector(".content-box");
+const modalEl = document.querySelector(".modal");
 
 // creates cards based on results from recipe finder
 function resultsCard(results) {
@@ -156,6 +157,10 @@ function resultsCard(results) {
     cardBoxEl.appendChild(cardContentEl);
 
     cardsContainerEl.appendChild(cardBoxEl);
+
+    cardBoxEl.addEventListener('click', () => {
+      modalEl.setAttribute('class', 'modal is-active');
+    });
   };
 };
 
