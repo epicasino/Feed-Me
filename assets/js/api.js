@@ -24,7 +24,7 @@ function queryFilter() {
     edamamParameters += `&health=keto-friendly`;
   } else if (query.diet == `Vegetarian`) {
     edamamParameters += `&health=vegetarian`;
-  };
+  }
 
   if (query.excluded == `Tree-Nuts`) {
     edamamParameters += `&health=tree-nut-free`;
@@ -32,7 +32,7 @@ function queryFilter() {
     edamamParameters += `&health=peanut-free`;
   } else if (query.excluded == `Milk`) {
     edamamParameters += `&health=dairy-free`;
-  };
+  }
 
   if (query.mealTime != `None`) {
     edamamParameters += `&mealType=${query.mealTime}`;
@@ -43,7 +43,7 @@ function queryFilter() {
   if (query.time == `less than 30 minutes`) {
     edamamParameters += `&time=30`;
   } else if (query.time == `more then 90 minutes`) {
-    // %2B is + symbol, edamam requires the + symbol to be encoded 
+    // %2B is + symbol, edamam requires the + symbol to be encoded
     edamamParameters += `&time=90%2B`;
   } else if (query.time == `30-60 minutes`) {
     edamamParameters += `&time=30-60`;
@@ -59,7 +59,7 @@ function queryFilter() {
   }
   console.log(edamamFetch + edamamParameters);
   requestEdamam();
-};
+}
 
 // Will get recipes based on query variable
 // https://developer.edamam.com/edamam-docs-recipe-api#/ API Reference for edamam
@@ -155,6 +155,10 @@ function resultsCard(results) {
   }
 }
 
+const feelingLuckyBtnEl = document.querySelector(".feeling-lucky-btn");
+
+feelingLuckyBtnEl.addEventListener("click", randomRecipe);
+
 // Will get random recipe from themealdb api
 // https://www.themealdb.com/api.php api for reference
 function randomRecipe() {
@@ -172,8 +176,19 @@ function randomRecipe() {
       };
       console.log(`Random Recipe:`);
       console.log(recipe);
+      feelingLucky(recipe);
     });
-}
+};
+
+function feelingLucky(recipe) {
+  feelingLuckyBtnEl.setAttribute("class", "button is-loading is-responsive");
+  // 50/50 conditional, 0 = random recipe url, 1 = beef tea url
+  if (Math.floor(Math.random() * 2) == 0) {
+    location.assign(recipe.url);
+  } else {
+    location.assign(`https://www.epicurious.com/recipes/food/views/beef-tea-395253`);
+  };
+};
 
 // Will make location suggestions based on user's lat & lon
 // https://docs.mapbox.com/playground/search-box/?q=Starbucks&language=en&session_token=0be1d0ab-b318-4ce1-8889-299c9730f4d0 API Reference for mapbox
@@ -218,5 +233,3 @@ function requestLocation() {
       requestMapBox(data.latitude, data.longitude);
     });
 }
-
-randomRecipe();
