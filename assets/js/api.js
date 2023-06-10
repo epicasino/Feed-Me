@@ -37,12 +37,11 @@ function queryFilter() {
 
   if (query.mealTime != `None`) {
     edamamParameters += `&mealType=${query.mealTime}`;
-  };
+  }
 
   if (query.cuisine != `None`) {
     edamamParameters += `&cuisineType=${query.cuisine}`;
-  };
-
+  }
 
   if (query.time == `less than 30 minutes`) {
     edamamParameters += `&time=30`;
@@ -53,14 +52,14 @@ function queryFilter() {
     edamamParameters += `&time=30-60`;
   } else {
     edamamParameters += `&time=60-90`;
-  };
+  }
 
   if (query.calories == `more than 800`) {
     // %2B is + symbol, edamam requires the + symbol to be encoded
     edamamParameters += `&calories=800%2B`;
   } else {
     edamamParameters += `&calories=${query.calories}`;
-  };
+  }
   console.log(edamamFetch + edamamParameters);
   requestEdamam();
 }
@@ -91,13 +90,13 @@ function requestEdamam() {
             ingredients: data.hits[i].recipe.ingredientLines,
           };
           results.recipes.push(recipe);
-        };
-      };
+        }
+      }
       dataParsed();
       console.log(results);
       resultsCard(results);
     });
-};
+}
 
 // gets the content-box class element from html
 const contentBoxEl = document.querySelector(".content-box");
@@ -140,11 +139,13 @@ function resultsCard(results) {
 
     // placeholder text (will be populated) inside of cardBoxEl div container
     const cardContentEl = document.createElement("div");
-    cardContentEl.setAttribute("class", "content");
+    cardContentEl.setAttribute("class", "content mt-5");
 
     // textcontent for above text
     cardMediaTitleEl.textContent = results.recipes[i].name;
-    cardContentEl.textContent = `placeholder`;
+    cardContentEl.textContent = `Ingredients: ${results.recipes[
+      i
+    ].ingredients.join(", ")}`;
 
     // appends child elements to parent elements, and those parent elements are children to cardsContainerEl parent element
     cardImgFigureEl.appendChild(cardImgEl);
@@ -158,11 +159,11 @@ function resultsCard(results) {
 
     cardsContainerEl.appendChild(cardBoxEl);
 
-    cardBoxEl.addEventListener('click', () => {
-      modalEl.setAttribute('class', 'modal is-active');
+    cardBoxEl.addEventListener("click", () => {
+      modalEl.setAttribute("class", "modal is-active");
     });
-  };
-};
+  }
+}
 
 const feelingLuckyBtnEl = document.querySelector(".feeling-lucky-btn");
 
@@ -185,10 +186,10 @@ function randomRecipe() {
       };
       console.log(`Random Recipe:`);
       console.log(recipe);
-      
+
       feelingLucky(recipe);
     });
-};
+}
 
 // function to give a 'random' recipe
 function feelingLucky(recipe) {
@@ -200,8 +201,8 @@ function feelingLucky(recipe) {
     location.assign(
       `https://www.epicurious.com/recipes/food/views/beef-tea-395253`
     );
-  };
-};
+  }
+}
 
 // Will make location suggestions based on user's lat & lon
 // https://docs.mapbox.com/playground/search-box/?q=Starbucks&language=en&session_token=0be1d0ab-b318-4ce1-8889-299c9730f4d0 API Reference for mapbox
@@ -230,7 +231,7 @@ function requestMapBox(lat, lon) {
       dataParsed();
       console.log(results);
     });
-};
+}
 
 // Will get location based on IP from ipapi API -> will pass lat & lon to mapbox for suggestions
 function requestLocation() {
@@ -245,4 +246,4 @@ function requestLocation() {
       );
       requestMapBox(data.latitude, data.longitude);
     });
-};
+}
