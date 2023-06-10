@@ -72,6 +72,7 @@ function updateQuery(event) {
     queryFilter();
     optionBoxesEl.setAttribute('style', 'display: none');
     feelingLuckyBtnEl.setAttribute('style', 'display:none')
+    questionBoxEl.setAttribute('style', 'display:none')
   };
 }
 function displayQuestion() {
