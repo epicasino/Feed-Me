@@ -91,4 +91,3 @@ function displayQuestion() {
 displayQuestion(); // call our display question function
 
 // modal 
-console.log(cardContainerEl.children[i]);

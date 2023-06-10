@@ -161,6 +161,8 @@ function resultsCard(results) {
 
     cardBoxEl.addEventListener("click", () => {
       modalEl.setAttribute("class", "modal is-active");
+      const title = document.querySelector('#modalTitle');
+      title.textContent = results.recipes[i].name;
     });
   }
 }
