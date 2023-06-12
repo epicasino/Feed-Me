@@ -237,7 +237,7 @@ function randomRecipe() {
 
 // function to give a 'random' recipe
 function feelingLucky(recipe) {
-  feelingLuckyBtnEl.setAttribute("class", "button is-loading is-responsive");
+  feelingLuckyBtnEl.setAttribute("class", "button is-loading is-responsive is-danger");
   // 50/50 conditional, 0 = random recipe url, 1 = beef tea url
   if (Math.floor(Math.random() * 2) == 0) {
     location.assign(recipe.url);
