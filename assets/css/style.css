@@ -69,3 +69,9 @@ body {
   background-color: var(--orange);
   color: white;
 }
+
+#recent-recipe-modal-content {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+} 
