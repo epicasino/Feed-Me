@@ -37,12 +37,11 @@ function queryFilter() {
 
   if (query.mealTime != `None`) {
     edamamParameters += `&mealType=${query.mealTime}`;
-  };
+  }
 
   if (query.cuisine != `None`) {
     edamamParameters += `&cuisineType=${query.cuisine}`;
-  };
-
+  }
 
   if (query.time == `less than 30 minutes`) {
     edamamParameters += `&time=30`;
@@ -53,14 +52,14 @@ function queryFilter() {
     edamamParameters += `&time=30-60`;
   } else {
     edamamParameters += `&time=60-90`;
-  };
+  }
 
   if (query.calories == `more than 800`) {
     // %2B is + symbol, edamam requires the + symbol to be encoded
     edamamParameters += `&calories=800%2B`;
   } else {
     edamamParameters += `&calories=${query.calories}`;
-  };
+  }
   console.log(edamamFetch + edamamParameters);
   requestEdamam();
 }
@@ -95,12 +94,19 @@ function requestEdamam() {
       };
       dataParsed();
       console.log(results);
+      
+      let resultsLocalStorage = JSON.parse(localStorage.getItem('results')) || [];
+      resultsLocalStorage.push(results);
+
+      localStorage.setItem('results', JSON.stringify(resultsLocalStorage));
+      
       resultsCard(results);
     });
-};
+}
 
 // gets the content-box class element from html
 const contentBoxEl = document.querySelector(".content-box");
+const modalEl = document.querySelector(".modal");
 
 // creates cards based on results from recipe finder
 function resultsCard(results) {
@@ -116,7 +122,7 @@ function resultsCard(results) {
   for (i = 0; i < results.recipes.length; i++) {
     // sets container and class attribute for card
     const cardBoxEl = document.createElement("div");
-    cardBoxEl.setAttribute("class", "card column is-3");
+    cardBoxEl.setAttribute("class", `cardBox${i} card column is-3`);
 
     // sets container for image inside of cardBoxEl div container
     const cardImgDivEl = document.createElement("div");
@@ -139,11 +145,13 @@ function resultsCard(results) {
 
     // placeholder text (will be populated) inside of cardBoxEl div container
     const cardContentEl = document.createElement("div");
-    cardContentEl.setAttribute("class", "content");
+    cardContentEl.setAttribute("class", "content mt-5");
 
     // textcontent for above text
     cardMediaTitleEl.textContent = results.recipes[i].name;
-    cardContentEl.textContent = `placeholder`;
+    cardContentEl.textContent = `Ingredients: ${results.recipes[
+      i
+    ].ingredients.join(", ")}`;
 
     // appends child elements to parent elements, and those parent elements are children to cardsContainerEl parent element
     cardImgFigureEl.appendChild(cardImgEl);
@@ -156,6 +164,45 @@ function resultsCard(results) {
     cardBoxEl.appendChild(cardContentEl);
 
     cardsContainerEl.appendChild(cardBoxEl);
+
+    // Event Listener to the card boxes
+    cardBoxEl.addEventListener("click", (event) => {
+
+      // grabbing elements from html that involve the modal 
+      const modalCard = document.querySelector('.modal');
+      const title = document.getElementById('modalTitle');
+      const img = document.getElementById('modalImg');
+      const content = document.getElementById('modalContent');
+      const recipeUrl = document.getElementById('modalLink');
+
+      target = event.target;
+
+      // conditional checks to see if the user clicked on the first card, second card, third card
+      if (target = cardBoxEl) {
+        modalCard.setAttribute("class", "modal js-modal-trigger is-active");
+        if ((target == document.querySelector(".cardBox0"))) {
+          title.textContent = results.recipes[0].name;
+          img.setAttribute('src', results.recipes[0].image);
+          content.textContent = `Ingredients: ${results.recipes[0].ingredients.join(", ")}`;
+          recipeUrl.textContent = `Here's a link to the recipe!`;
+          recipeUrl.setAttribute('href', results.recipes[0].url);
+        } 
+        else if ((target == document.querySelector(".cardBox1"))) {
+          title.textContent = results.recipes[1].name;
+          img.setAttribute("src", results.recipes[1].image);
+          content.textContent = `Ingredients: ${results.recipes[1].ingredients.join(", ")}`;
+          recipeUrl.textContent = `Here's a link to the recipe!`;
+          recipeUrl.setAttribute("href", results.recipes[1].url);
+        }
+        else if ((target == document.querySelector(".cardBox2"))) {
+          title.textContent = results.recipes[2].name;
+          img.setAttribute("src", results.recipes[2].image);
+          content.textContent = `Ingredients: ${results.recipes[2].ingredients.join(", ")}`;
+          recipeUrl.textContent = `Here's a link to the recipe!`;
+          recipeUrl.setAttribute("href", results.recipes[2].url);
+        };
+      };
+    });
   };
 };
 
@@ -180,10 +227,10 @@ function randomRecipe() {
       };
       console.log(`Random Recipe:`);
       console.log(recipe);
-      
+
       feelingLucky(recipe);
     });
-};
+}
 
 // function to give a 'random' recipe
 function feelingLucky(recipe) {
@@ -220,12 +267,12 @@ function requestMapBox(lat, lon) {
             address: data.suggestions[i].full_address,
           };
           results.locations.push(location);
-        }
-      }
+        };
+      };
       dataParsed();
       console.log(results);
     });
-};
+}
 
 // Will get location based on IP from ipapi API -> will pass lat & lon to mapbox for suggestions
 function requestLocation() {
@@ -240,4 +287,4 @@ function requestLocation() {
       );
       requestMapBox(data.latitude, data.longitude);
     });
-};
+}

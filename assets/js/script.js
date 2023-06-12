@@ -72,6 +72,7 @@ function updateQuery(event) {
     queryFilter();
     optionBoxesEl.setAttribute('style', 'display: none');
     feelingLuckyBtnEl.setAttribute('style', 'display:none')
+    questionBoxEl.setAttribute('style', 'display:none')
   };
 }
 function displayQuestion() {
@@ -90,4 +91,3 @@ function displayQuestion() {
 displayQuestion(); // call our display question function
 
 // modal 
-console.log(cardContainerEl.children[i]);
