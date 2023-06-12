@@ -1,13 +1,44 @@
-# Feed-Me
+# Feed-Me (UCSD-Project 1)
+
+## User Story
+
+As a person searching for a recipe,
+I will be presented with a question and different options
+When I click on an option I want
+I will then be presented with another question and options for that question
+When I finish the questions
+I will be presented with recipes based on my answers from the questions
+After reloading the page
+I can access my recent recipes from past results
+If I want a random recipe, I can click on a button
+Then I get redirected to a random recipe
+
+## Acceptance Criteria
+
+It is complete when:
+
+1. There is a question and option box for each question
+2. The user can click on an option
+3. The question and option values change depending on the question after the user clicks an option
+4. The results use an API that gets recipes based on parameters
+5. There is a button that gives a random recipe
+6. There is a page or something similar that gives me my recent recipes
+7. The page is polished and refined
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+- A recipe searcher that will give you recipes based on your current hunger needs.
+- Using a quiz-style form, you will be presented with three recipes, and their original links, to use for your latest cravings.
+- Built using Bulma's CSS Framework and utilizing API's from Edamam, themealdb, and ipapi
+- As our first project from complete scratch, team communication and collaboration was key in our success to complete a refined, fully functional application within a week.
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+## Features
+
+- 3 recipe results based on user feedback on quiz-style form
+- Recipe results will always provide a link to the recipe's original website.
+- 'Im feeling lucky' button that gives random recipe (or sometimes the recipe for Beef Tea)
+- 'Recent recipes' on the right of the navbar gives the recipes that you've recently recieved from past recipe search results after refreshing.
+- Past recipes on the 'Recent recipes' section will have a link to click to access the recipe's original website.
 
 ## Table of Contents (Optional)
 
@@ -20,7 +51,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+No installation of files are needed to load the page. Deployment is provided by GitPages. [Click Here To Access.](https://epicasino.github.io/Feed-Me/)
 
 ## Usage
 
@@ -34,34 +65,43 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+**Project Collaborators:**
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+- [Ray Badua](https://github.com/epicasino)
+- [Chelsea Pratte](https://github.com/callmechelsea)
+- [Alison Colao](https://github.com/acolao)
+- [Martin Navarrete](https://github.com/mavarreteno)
 
-If you followed tutorials, include links to those here as well.
+**[CSS Framework by Bulma](https://bulma.io/)**
+
+**[Bulma Modal JS Implementation by Bulma](https://bulma.io/documentation/components/modal/)**
+
+**[Recipe Search API by Edamam](https://developer.edamam.com/edamam-docs-recipe-api)**
+
+**[Random Meal API by TheMealDB](https://www.themealdb.com/)**
+
+**[Location API by ipapi](https://ipapi.co/)**
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+MIT License
 
----
+Copyright (c) 2023 Ray Badua, Chelsea Pratte, Alison Colao, Martin Navarrete
 
-ðŸ† The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## Badges
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
