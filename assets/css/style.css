@@ -87,6 +87,11 @@ body {
   font-family: 'Tinos', serif;
 }
 
+.navbar-end {
+  display: flex;
+  gap: 10%;
+}
+
 #recent-recipe-modal-content {
   display: flex;
   flex-flow: column nowrap;
