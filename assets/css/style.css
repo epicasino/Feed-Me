@@ -55,12 +55,18 @@ body {
   -o-border-radius: 15px;
   background-image: url(../images/dinner.jpg);
   background-size: cover;
+  -webkit-text-stroke: 0.5px white;
+  -webkit-text-fill-color: black;
 }
 
 .option-boxes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  font-family: 'Lora', serif;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Noticia Text', serif;
+  font-family: 'Tinos', serif;
 }
 
 .option-boxes > button {
@@ -68,6 +74,17 @@ body {
   height: 30%;
   background-color: var(--orange);
   color: white;
+  font-family: 'Lora', serif;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Noticia Text', serif;
+  font-family: 'Tinos', serif;
+}
+
+.button {
+  font-family: 'Lora', serif;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Noticia Text', serif;
+  font-family: 'Tinos', serif;
 }
 
 #recent-recipe-modal-content {
