@@ -94,6 +94,12 @@ function requestEdamam() {
       };
       dataParsed();
       console.log(results);
+      
+      let resultsLocalStorage = JSON.parse(localStorage.getItem('results')) || [];
+      resultsLocalStorage.push(results);
+
+      localStorage.setItem('results', JSON.stringify(resultsLocalStorage));
+      
       resultsCard(results);
     });
 }
