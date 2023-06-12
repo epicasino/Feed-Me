@@ -1,3 +1,5 @@
+// modal script added from https://bulma.io/documentation/components/modal/ 
+
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
   function openModal($el) {
