@@ -2,6 +2,10 @@
 
 ## User Story
 
+As a hungry user in need of a recipe, I need an application that helps search for a recipe based on my needs, so that I can find and cook foods that fit my current needs.
+
+## Acceptance Criteria
+
 - As a person searching for a recipe,
 - I will be presented with a question and different options
 - When I click on an option I want
@@ -12,8 +16,6 @@
 - I can access my recent recipes from past results
 - If I want a random recipe, I can click on a button
 - Then I get redirected to a random recipe
-
-## Acceptance Criteria
 
 It is complete when:
 
