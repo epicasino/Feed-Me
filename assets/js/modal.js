@@ -1,4 +1,4 @@
-// modal script added from https://bulma.io/documentation/components/modal/ 
+// modal script added from https://bulma.io/documentation/components/modal/
 
 document.addEventListener("DOMContentLoaded", () => {
   // Functions to open and close a modal
@@ -48,4 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
       closeAllModals();
     }
   });
+});
+
+// about-me-button modal & event listener
+const aboutMeModalEl = document.getElementById("about-me-modal");
+const aboutMeBtnEl = document.getElementById("about-me-btn");
+aboutMeBtnEl.addEventListener("click", () => {
+  aboutMeModalEl.setAttribute("class", "modal js-modal-trigger is-active");
 });

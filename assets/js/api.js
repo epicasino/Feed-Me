@@ -17,7 +17,6 @@ let edamamParameters = ``;
 
 // function that will check each query object & set parameters for edamam based on user's choices
 function queryFilter() {
-  // todo: could turn into a for loop function i think
 
   if (query.diet == `Vegan`) {
     edamamParameters += `&health=vegan`;
@@ -66,6 +65,7 @@ function queryFilter() {
 
 // Will get recipes based on query variable
 // https://developer.edamam.com/edamam-docs-recipe-api#/ API Reference for edamam
+
 function requestEdamam() {
   fetch(edamamFetch + edamamParameters)
     .then(function (response) {
@@ -95,6 +95,7 @@ function requestEdamam() {
       dataParsed();
       console.log(results);
       
+      // will take every new result from current page session and push it to another array for localstorage to utilize
       let resultsLocalStorage = JSON.parse(localStorage.getItem('results')) || [];
       resultsLocalStorage.push(results);
 
