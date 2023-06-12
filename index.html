@@ -33,11 +33,17 @@
 <body>
 
 
-  <nav class="navbar p-3 is-flex is-justify-content-center" role="navigation" aria-label="main navigation">
+  <nav class="navbar p-3 is-flex is-justify-content-center is-align-items-center" role="navigation" aria-label="main navigation">
     <div class="navbar-start">
       <img id="navbar-logo" src="./assets/images/feed-me-transparent-background.png" alt="Feed Me: Recipe Searcher" height="200"
         width="300">
       <h1 class="is-size-1"></h1>
+    </div>
+
+    <div class="navbar-end">
+      <a id="recent-recipes-btn" class="button is-warning">
+        <strong>Recent Recipes</strong>
+      </a>
     </div>
   </nav>
 
@@ -62,7 +68,7 @@
     <div class="modal js-modal-trigger" data-target="modal-js-example">
       <div class="modal-background"></div>
       <div class="modal-content has-background-white py-5 px-5">
-        <h3 id="modalTitle" class="title mb-6">Join the Club</h3>
+        <h3 id="modalTitle" class="title mb-6"></h3>
         <img id="modalImg">
         <p id="modalContent"></p>
         <a id="modalLink" target="_blank"></a>
@@ -70,11 +76,21 @@
       
       <button class="modal-close is-large" aria-label="close"></button>
     </div>
+
+    <div id="recent-recipes-modal" class="modal js-modal-trigger" data-target="modal-js-example">
+      <div class="modal-background"></div>
+      <div id="recent-recipe-modal-content" class="modal-content has-background-white py-5 px-5">
+        <h3 id="recent-recipe-modal-title" class="title mb-6">Recent Recipes:</h3>
+      </div>
+    
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
   </main>
   
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/api.js"></script>
   <script src="./assets/js/modal.js"></script>
+  <script src="./assets/js/localStorage.js"></script>
 </body>
 
 </html>

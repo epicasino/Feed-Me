@@ -86,3 +86,9 @@ body {
   font-family: 'Noticia Text', serif;
   font-family: 'Tinos', serif;
 }
+
+#recent-recipe-modal-content {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+} 
