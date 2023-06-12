@@ -116,7 +116,7 @@ function resultsCard(results) {
   for (i = 0; i < results.recipes.length; i++) {
     // sets container and class attribute for card
     const cardBoxEl = document.createElement("div");
-    cardBoxEl.setAttribute("class", "card column is-3");
+    cardBoxEl.setAttribute("class", `cardBox${i} card column is-3`);
 
     // sets container for image inside of cardBoxEl div container
     const cardImgDivEl = document.createElement("div");
@@ -159,10 +159,38 @@ function resultsCard(results) {
 
     cardsContainerEl.appendChild(cardBoxEl);
 
-    cardBoxEl.addEventListener("click", () => {
-      modalEl.setAttribute("class", "modal is-active");
-      const title = document.querySelector('#modalTitle');
-      title.textContent = results.recipes[i].name;
+    cardBoxEl.addEventListener("click", (event) => {
+      const modalCard = document.querySelector('.modal');
+      const title = document.getElementById('modalTitle');
+      const img = document.getElementById('modalImg');
+      const content = document.getElementById('modalContent');
+      const recipeUrl = document.getElementById('modalLink');
+      target = event.target;
+
+      if (target = cardBoxEl) {
+        modalCard.setAttribute("class", "modal js-modal-trigger is-active");
+        if ((target == document.querySelector(".cardBox0"))) {
+          title.textContent = results.recipes[0].name;
+          img.setAttribute('src', results.recipes[0].image);
+          content.textContent = `Ingredients: ${results.recipes[0].ingredients.join(", ")}`;
+          recipeUrl.textContent = `Here's a link to the recipe!`;
+          recipeUrl.setAttribute('href', results.recipes[0].url);
+        } 
+        else if ((target == document.querySelector(".cardBox1"))) {
+          title.textContent = results.recipes[1].name;
+          img.setAttribute("src", results.recipes[1].image);
+          content.textContent = `Ingredients: ${results.recipes[1].ingredients.join(", ")}`;
+          recipeUrl.textContent = `Here's a link to the recipe!`;
+          recipeUrl.setAttribute("href", results.recipes[1].url);
+        }
+        else if ((target == document.querySelector(".cardBox2"))) {
+          title.textContent = results.recipes[2].name;
+          img.setAttribute("src", results.recipes[2].image);
+          content.textContent = `Ingredients: ${results.recipes[2].ingredients.join(", ")}`;
+          recipeUrl.textContent = `Here's a link to the recipe!`;
+          recipeUrl.setAttribute("href", results.recipes[2].url);
+        }
+      }
     });
   }
 }

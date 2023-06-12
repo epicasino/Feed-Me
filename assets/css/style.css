@@ -54,6 +54,7 @@ body {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
   background-image: url(../images/dinner.jpg);
+  background-size: cover;
 }
 
 .option-boxes {
