@@ -3,6 +3,7 @@ const recentRecipeBtn = document.querySelector("#recent-recipes-btn");
 recentRecipeLocalStorage = JSON.parse(localStorage.getItem("results"));
 
 // console.log(recentRecipeLocalStorage);
+let called = false;
 
 recentRecipeBtn.addEventListener("click", (event) => {
   // grabbing elements from html that involve the modal
@@ -12,10 +13,12 @@ recentRecipeBtn.addEventListener("click", (event) => {
   // sets modal element active
   modalCard.setAttribute("class", "modal js-modal-trigger is-active");
 
+  if (called) return;
+  called = true;
   // for loop- will go for length of localstorage recipe array
   for (i = 0; i < recentRecipeLocalStorage.length; i++) {
     // within the for loop, another is used to get the data from each localstorage array's objects
-    for (recipe = 0; recipe < 2; recipe++) {
+    for (recipe = 0; recipe < 3; recipe++) {
       // sets container and class attribute for card
       const cardBoxEl = document.createElement("div");
       cardBoxEl.setAttribute("class", `card`);
