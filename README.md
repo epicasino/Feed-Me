@@ -2,16 +2,16 @@
 
 ## User Story
 
-As a person searching for a recipe,
-I will be presented with a question and different options
-When I click on an option I want
-I will then be presented with another question and options for that question
-When I finish the questions
-I will be presented with recipes based on my answers from the questions
-After reloading the page
-I can access my recent recipes from past results
-If I want a random recipe, I can click on a button
-Then I get redirected to a random recipe
+- As a person searching for a recipe,
+- I will be presented with a question and different options
+- When I click on an option I want
+- I will then be presented with another question and options for that question
+- When I finish the questions
+- I will be presented with recipes based on my answers from the questions
+- After reloading the page
+- I can access my recent recipes from past results
+- If I want a random recipe, I can click on a button
+- Then I get redirected to a random recipe
 
 ## Acceptance Criteria
 
@@ -55,13 +55,10 @@ No installation of files are needed to load the page. Deployment is provided by 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+**Upon first initializing the website you will be presented with this page.**
+![Website when first Initializing](./assets/images/readme-images/initialization.JPG)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
 
 ## Credits
 
