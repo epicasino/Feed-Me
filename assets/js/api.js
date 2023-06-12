@@ -140,8 +140,10 @@ function resultsCard(results) {
     cardMediaEl.setAttribute("class", "media-content");
 
     // recipe title name inside of cardBoxEl div container
-    const cardMediaTitleEl = document.createElement("p");
+    const cardMediaTitleEl = document.createElement("a");
     cardMediaTitleEl.setAttribute("class", "title is-4");
+    cardMediaTitleEl.setAttribute('target', '_blank');
+    cardMediaTitleEl.setAttribute('href', results.recipes[i].url);
 
     // placeholder text (will be populated) inside of cardBoxEl div container
     const cardContentEl = document.createElement("div");
