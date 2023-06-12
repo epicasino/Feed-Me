@@ -40,15 +40,6 @@ It is complete when:
 - 'Recent recipes' on the right of the navbar gives the recipes that you've recently recieved from past recipe search results after refreshing.
 - Past recipes on the 'Recent recipes' section will have a link to click to access the recipe's original website.
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-
 ## Installation
 
 No installation of files are needed to load the page. Deployment is provided by GitPages. [Click Here To Access.](https://epicasino.github.io/Feed-Me/)
@@ -58,7 +49,23 @@ No installation of files are needed to load the page. Deployment is provided by 
 **Upon first initializing the website you will be presented with this page.**
 ![Website when first Initializing](./assets/images/readme-images/initialization.JPG)
 
+**The main part of the application is the quiz-style form to guage your current cravings. The user can click on one of four options. Once the user has decided and clicked on an option, another question will appear along with new options.**
+![Website questions](./assets/images/readme-images/quiz-section.JPG)
 
+**There is also a 'Feeling Lucky' button that will lead to a random recipe (or lead to Beef Tea).**
+![Im feeling lucky button](./assets/images/readme-images/feeling-lucky.JPG)
+
+**After going through the questions, you will be presented with three recipes based on the options you clicked per question.**
+![Recipe results screen](./assets/images/readme-images/recipe-results.JPG)
+
+**When clicking on a recipe, you will be presented with a modal with something similar to this.**
+![Recipe Card](./assets/images/readme-images/recipe-results-card.JPG)
+
+**The 'About FeedMe' Button will lead to a modal card.**
+![About FeedMe Button Modal](./assets/images/readme-images/about-me.JPG)
+
+**And finally, The 'Recent Recipes' button will lead to a modal containing the recipes you've recieved from past sessions in one area!**
+![Recent Recipes modal](./assets/images/readme-images/recent-recipes.JPG)
 
 ## Credits
 
