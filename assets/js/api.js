@@ -90,8 +90,8 @@ function requestEdamam() {
             ingredients: data.hits[i].recipe.ingredientLines,
           };
           results.recipes.push(recipe);
-        }
-      }
+        };
+      };
       dataParsed();
       console.log(results);
       resultsCard(results);
@@ -159,14 +159,19 @@ function resultsCard(results) {
 
     cardsContainerEl.appendChild(cardBoxEl);
 
+    // Event Listener to the card boxes
     cardBoxEl.addEventListener("click", (event) => {
+
+      // grabbing elements from html that involve the modal 
       const modalCard = document.querySelector('.modal');
       const title = document.getElementById('modalTitle');
       const img = document.getElementById('modalImg');
       const content = document.getElementById('modalContent');
       const recipeUrl = document.getElementById('modalLink');
+
       target = event.target;
 
+      // conditional checks to see if the user clicked on the first card, second card, third card
       if (target = cardBoxEl) {
         modalCard.setAttribute("class", "modal js-modal-trigger is-active");
         if ((target == document.querySelector(".cardBox0"))) {
@@ -189,11 +194,11 @@ function resultsCard(results) {
           content.textContent = `Ingredients: ${results.recipes[2].ingredients.join(", ")}`;
           recipeUrl.textContent = `Here's a link to the recipe!`;
           recipeUrl.setAttribute("href", results.recipes[2].url);
-        }
-      }
+        };
+      };
     });
-  }
-}
+  };
+};
 
 const feelingLuckyBtnEl = document.querySelector(".feeling-lucky-btn");
 
@@ -231,8 +236,8 @@ function feelingLucky(recipe) {
     location.assign(
       `https://www.epicurious.com/recipes/food/views/beef-tea-395253`
     );
-  }
-}
+  };
+};
 
 // Will make location suggestions based on user's lat & lon
 // https://docs.mapbox.com/playground/search-box/?q=Starbucks&language=en&session_token=0be1d0ab-b318-4ce1-8889-299c9730f4d0 API Reference for mapbox
@@ -256,8 +261,8 @@ function requestMapBox(lat, lon) {
             address: data.suggestions[i].full_address,
           };
           results.locations.push(location);
-        }
-      }
+        };
+      };
       dataParsed();
       console.log(results);
     });
