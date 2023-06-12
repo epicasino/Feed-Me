@@ -90,4 +90,8 @@ function displayQuestion() {
 }
 displayQuestion(); // call our display question function
 
-// modal 
+// refresh page
+const logoRefreshEl = document.querySelector('#nav-logo-refresh');
+logoRefreshEl.addEventListener('click', () => {
+  location.reload();
+})
