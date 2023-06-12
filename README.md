@@ -1,4 +1,4 @@
-# Feed-Me (UCSD-Project 1)
+# [Feed-Me (UCSD-Project 1)](https://epicasino.github.io/Feed-Me/)
 
 ## User Story
 
